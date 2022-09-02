@@ -1,0 +1,2 @@
+# nftables
+nftables tuzfal configuracio
