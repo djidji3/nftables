@@ -42,3 +42,5 @@ A csomagok celja alapjan 3 tovabbi chain-re osztom fel a forward-chain nevu lanc
 - nftables.conf tartalmazza a filter, nat , route tablakat es includolja az egyes tablakhoz 
     tartozo tovabbi includokat, azok pedig a tovabbi includokat .....
 
+# celgepre felmasoljuk a letrehozott konyvtarszerkezetet
+sudo rsync -r --del ./nftables/ nemcsics@192.168.100.204:/etc/nftables
