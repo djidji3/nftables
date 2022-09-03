@@ -39,4 +39,6 @@ A csomagok celja alapjan 3 tovabbi chain-re osztom fel a forward-chain nevu lanc
 # a szabalyok tovabb bontasa fajlokba
 - tegyuk a valtozokat egy kulon fajlba
 - tegyuk kulon fajlba a tablakat (filter, nat, route)
+- nftables.conf tartalmazza a filter, nat , route tablakat es includolja az egyes tablakhoz 
+    tartozo tovabbi includokat, azok pedig a tovabbi includokat .....
 

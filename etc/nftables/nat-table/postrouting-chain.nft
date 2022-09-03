@@ -1,0 +1,5 @@
+# POSTROUTING-CHAIN
+    chain postrouting-chain { 
+        type nat hook postrouting priority filter; policy accept;
+            oifname $INTERNET_DEV masquerade comment "NET IRANYBA MENO CSOMAGOK NAT-olva LESZNEK AZ ELSODLEGES PUBLIKUS IPCIMRE" 
+        }

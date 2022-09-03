@@ -1,0 +1,6 @@
+# PREROUTING-CHAIN
+    chain prerouting-chain {
+        type nat hook prerouting priority filter; policy accept;
+            iifname $INTERNET_DEV tcp dport { smtp, $MAILSERVER_PORT } dnat to $MAILSERVER_IP comment "NET-rol ERKEZO LEVELEZO PROTOKOLLOK NATOLASA A MAIL SERVERRE"
+            iifname $INTERNET_DEV tcp dport 2222 dnat to $MAILSERVER_IP:22 comment "NET-rol A 2222 PORTRA ERKEZO CSOMAGOK NATOLASA A MAIL SERVER 22 PORTJARA " 
+        }
