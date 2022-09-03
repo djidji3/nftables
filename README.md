@@ -11,8 +11,8 @@ for i in iptables ip6tables arptables ebtables ; do update-alternatives --set ${
 apt update && apt install nftables
 
 # service lekerdezes, engedelyezes:
-systemctl status nftables
-systemctl enable nftables
+- systemctl status nftables
+- systemctl enable nftables
 
 # routolas engedelyezese
 - vi /etc/sysctl.d/local.conf
@@ -25,9 +25,13 @@ systemctl enable nftables
 
 - systemctl restart procps
 # logikai felosztas
- Az input lanc altalaban nem tul bonyolult egy routeren
+ Az input lanc altalaban nem tul bonyolult egy routeren, ezert ennek a szetbontasaval nem erdemes foglalkozni
 #
 A csomagok celja alapjan 3 tovabbi chain-re osztom fel a forward-chain nevu lancomat:
 - nft add chain inet filter-table forward2lan-chain
 - nft add chain inet filter-table forward2dmz-chain
 - nft add chain inet filter-table forward2internet-chain
+
+# valtozok deklaralasa
+- define VALTOZONEV=ertke
+- define DMZ_DEV=enp0s9
