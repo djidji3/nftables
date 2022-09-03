@@ -35,3 +35,8 @@ A csomagok celja alapjan 3 tovabbi chain-re osztom fel a forward-chain nevu lanc
 # valtozok deklaralasa
 - define VALTOZONEV=ertke
 - define DMZ_DEV=enp0s9
+
+# a szabalyok tovabb bontasa fajlokba
+- tegyuk a valtozokat egy kulon fajlba
+- tegyuk kulon fajlba a tablakat (filter, nat, route)
+

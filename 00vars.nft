@@ -1,0 +1,13 @@
+# DEFINE VARIABLES
+
+define INTERNET_DEV=enp0s3
+
+define LAN_DEV=enp0s8
+define LAN_NET=10.10.10.0/24
+
+define DMZ_DEV=enp0s9
+define DMZ_NET=10.20.20.0/24
+
+define OP_IP=192.168.100.101
+define MAILSERVER_IP=10.20.20.2
+define MAILSERVER_PORT={ submission, imap2 }
