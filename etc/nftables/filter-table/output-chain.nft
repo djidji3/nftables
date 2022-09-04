@@ -1,0 +1,3 @@
+# OUTPUT-CHAIN
+
+include "/etc/nftables/filter-table/output-chain/*.nft"

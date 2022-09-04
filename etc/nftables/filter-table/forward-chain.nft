@@ -1,4 +1,7 @@
 # FORWARD-CHAIN
+
+include "/etc/nftables/filter-table/forward-chain/*.nft"
+
     chain forward-chain {
         type filter hook forward priority filter; policy drop;
             ct state invalid counter packets 0 bytes 0 drop comment "INVALID CSOMAGOK SZAMOLVA ES ELDOBVA" 

@@ -1,4 +1,7 @@
  # INPUT-CHAIN
+
+ include "/etc/nftables/filter-table/input-chain/*.nft"
+ 
     chain input-chain { 
         type filter hook input priority filter; policy drop;
 			iif "lo" counter packets 0 bytes 0 accept \
