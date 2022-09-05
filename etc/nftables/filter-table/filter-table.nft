@@ -1,4 +1,3 @@
-# FILTER-TABLE
 table inet filter-table {
     include  "/etc/nftables/filter-table/forward-chain/*.nft"
 }
