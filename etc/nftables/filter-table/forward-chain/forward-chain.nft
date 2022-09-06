@@ -1,0 +1,17 @@
+# FORWARD-CHAIN
+chain forward-chain {
+    type filter hook forward priority filter; policy drop;
+        ct state invalid counter packets 0 bytes 0 drop \
+            comment "INVALID CSOMAGOK SZAMOLVA ES ELDOBVA" 
+        ct state established,related counter packets 1 bytes 139 accept \
+            comment "MAR LETEZO KAPCSOLATOK SZAMOLVA ES ENGEDVE" 
+        oifname $INTERNET_DEV jump forward2internet-chain \
+            comment "INTERNET FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        oifname $LAN_DEV jump forward2lan-chain \
+            comment "LAN FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        oifname $DMZ_DEV jump forward2dmz-chain \
+            comment "DMZ FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        counter packets 3 bytes 184 drop \
+            comment "MINDEN EGYEB SZAMOLVA ES ELDOBVA" 
+        }
+        

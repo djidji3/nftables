@@ -1,6 +1,7 @@
 # FORWARD2INTERNET-CHAIN
-    chain forward2internet-chain {
-            iif $DMZ_DEV ip saddr $DMZ_NET counter packets 0 bytes 0 accept comment "DMZ > NET SZAMOLVA ES ENGEDVE" 
-            iif $LAN_DEV ip saddr $LAN_NET accept comment "INSIDE > NET ENGEDVE" 
-        
-    }
+chain forward2internet-chain {
+    iif $DMZ_DEV ip saddr $DMZ_NET counter packets 0 bytes 0 accept \
+        comment "DMZ > NET SZAMOLVA ES ENGEDVE" 
+    iif $LAN_DEV ip saddr $LAN_NET accept \
+        comment "INSIDE > NET ENGEDVE"  
+}

@@ -1,5 +1,5 @@
  # FORWARD2LAN-CHAIN
-    chain forward2lan-chain {
-        drop comment "MINDEN BELSO HALOZAT FELE IRANYULOL CSOMAG ELDOBVA"
-    }
+chain forward2lan-chain {
+    drop comment "MINDEN BELSO HALOZAT FELE IRANYULOL CSOMAG ELDOBVA"
+}
     
