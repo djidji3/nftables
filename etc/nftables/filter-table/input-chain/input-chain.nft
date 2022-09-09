@@ -1,21 +1,21 @@
 # INPUT-CHAIN
 chain input-chain { 
-        type filter hook input priority filter; policy drop;
-			iif "lo" counter packets 0 bytes 0 accept \
-                comment "lo KOMMUNIKACIO ENGEDVE" 
-			ct state invalid counter packets 0 bytes 0 drop \
-                comment "INVALID CSOMAGOK ELDOBVA"
-			ct state established,related counter packets 52 bytes 3744 accept \
-                comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
-            ip saddr { $OP_IP } counter packets 431 bytes 30305 accept \
-                comment "SAJAT GEPEMBROL MINDEN ENGEDVE" 
+    type filter hook input priority filter; policy drop;
+	    iif "lo" counter packets 0 bytes 0 accept \
+            comment "lo KOMMUNIKACIO ENGEDVE" 
+		ct state invalid counter packets 0 bytes 0 drop \
+            comment "INVALID CSOMAGOK ELDOBVA"
+		ct state established,related counter packets 52 bytes 3744 accept \
+            comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
+        ip saddr { $OP_IP } counter packets 431 bytes 30305 accept \
+            comment "SAJAT GEPEMBROL MINDEN ENGEDVE" 
 #			tcp dport ssh ct state new meter ssh-input-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter packets 0 bytes 0 drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
 #            icmp type echo-request meter ping-limit size 65535 { ip saddr limit rate over 5/minute } counter packets 0 bytes 0 drop comment "PING KERESEK LIMITALASA" 
-            icmp type echo-request counter packets 0 bytes 0 accept \
-                comment "PING SZAMOLVA ES ENGEDVE" 
-            ip6 nexthdr ipv6-icmp icmpv6 type { nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert } accept \
-                comment "icmpv6 ENGEDVE" 
-            iif $LAN_DEV ip saddr $LAN_NET counter packets 0 bytes 0 accept \
-                comment "INSIDE > ROUTER SZAMOLVA ES BEENGEDVE A ROUTERRE" 
-            counter packets 0 bytes 0 drop comment "MINDEN EGYEB SZAMOLVA ES ELDOBVA" 
-         }
+        icmp type echo-request counter packets 0 bytes 0 accept \
+            comment "PING SZAMOLVA ES ENGEDVE" 
+        ip6 nexthdr ipv6-icmp icmpv6 type { nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert } accept \
+            comment "icmpv6 ENGEDVE" 
+        iif $LAN_DEV ip saddr $LAN_NET counter packets 0 bytes 0 accept \
+            comment "INSIDE > ROUTER SZAMOLVA ES BEENGEDVE A ROUTERRE" 
+        counter packets 0 bytes 0 drop comment "MINDEN EGYEB SZAMOLVA ES ELDOBVA" 
+}
