@@ -1,0 +1,41 @@
+# DEFINE SET : 
+
+set OP_IP_SET { 
+    type ipv4_addr 
+    elements = { 192.168.100.101 }
+}
+
+set OP_MAC_SET { 
+    type ether_addr 
+    elements = { 00:E0:4C:68:17:E0, 08:00:27:dc:8b:99 }
+}
+
+set MAILSERVER_PORT_SET { 
+    type inet_service 
+    elements = { submission, imap2 }
+}
+
+set BLACKLIST_SET {
+    type ipv4_addr
+    flags interval
+    elements = { 10.99.99.0/24, 10.99.98.4-10.99.98.12}
+}
+
+set ACCEPT_INTERNET_SET {
+    type ipv4_addr . inet_proto . inet_service
+    elements = 
+        { 
+            74.125.133.108 . tcp . smtp 
+        }
+}
+
+map LAN_VMAP {
+    type ipv4_addr : verdict
+    flags interval, timeout
+    elements = 
+        { 
+            10.10.10.20-10.10.10.30 : jump forward2internet_servers, 
+            10.10.10.20-10.10.10.31 : jump forward2internet_boss, 
+            10.10.10.20-10.10.10.32 : jump forward2internet_finance 
+        }
+}

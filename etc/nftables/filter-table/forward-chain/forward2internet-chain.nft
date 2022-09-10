@@ -1,5 +1,12 @@
 # FORWARD2INTERNET-CHAIN
 chain forward2internet-chain {
+    tcp dport ftp ct helper set "ftp-standart-helper" \
+        comment "FTP HELPER ENGEDELYEZVE"
+    udp dport sip ct helper set "sip-helper" \
+        comment "SIP HELPER ENGEDELYEZVE"
+
+    meta nfproto ipv4 ip daddr . meta l4proto . tcp dport @ACCEPT_INTERNET_SET accept \
+        comment "IPCIM+PROTOCOLL+PORT EZEN SET ELEMEIN ENGEDVE"
     iif $DMZ_DEV ip saddr $DMZ_NET counter packets 0 bytes 0 accept \
         comment "DMZ > NET SZAMOLVA ES ENGEDVE" 
     iif $LAN_DEV ip saddr $LAN_NET accept \
