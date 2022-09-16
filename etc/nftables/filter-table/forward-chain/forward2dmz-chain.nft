@@ -1,12 +1,12 @@
 chain forward2dmz-chain {
 #	tcp dport ssh ct state new meter ssh-dmz-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter packets 0 bytes 0 drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
-    iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport $MAILSERVER_PORT  ct state new counter packets 0 bytes 0 accept \
+    iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport $MAILSERVER_PORT  ct state new counter accept \
         comment "INSIDE > DMZ  MAIL PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
-    iifname $LAN_DEV ip saddr 10.10.10.2 ip daddr $DMZ_NET tcp dport 22 ct state new counter packets 0 bytes 0 accept \
+    iifname $LAN_DEV ip saddr 10.10.10.2 ip daddr $DMZ_NET tcp dport 22 ct state new counter accept \
         comment "INSIDE > DMZ UJ SSH KAPCSOLATOK SZAMOLVA ES ENGEDVE" 
-    iifname $INTERNET_DEV ip protocol tcp ip daddr $MAILSERVER_IP tcp dport { $MAILSERVER_PORT, smtp } counter packets 0 bytes 0 accept \
+    iifname $INTERNET_DEV ip protocol tcp ip daddr $MAILSERVER_IP tcp dport { $MAILSERVER_PORT, smtp } counter accept \
         comment "NET > DMZ MAIL PROTOKOLLOK ENGEDVE" 
-    iifname $LAN_DEV ip daddr $MAILSERVER_IP tcp dport ssh counter packets 0 bytes 0 accept \
+    iifname $LAN_DEV ip daddr $MAILSERVER_IP tcp dport ssh counter accept \
         comment "INSIDE > DMZ AZ SSH FORGALOM NATOLASAHOZ A MAIL SERVERRE ENGEDVE" 
 }
 
