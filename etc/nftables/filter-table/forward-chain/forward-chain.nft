@@ -2,9 +2,10 @@
 chain forward-chain {
     type filter hook forward priority filter; policy drop;
         ct state invalid drop \
-            comment "INVALID CSOMAGOK SZAMOLVA ES ELDOBVA" 
+            comment "INVALID CSOMAGOK ELDOBVA" 
         ct state established,related accept \
-            comment "MAR LETEZO KAPCSOLATOK SZAMOLVA ES ENGEDVE" 
+            comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
+        
         oifname $INTERNET_DEV jump forward2internet-chain \
             comment "INTERNET FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
         oifname $LAN_DEV jump forward2lan-chain \
