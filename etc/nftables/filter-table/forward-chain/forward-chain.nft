@@ -8,10 +8,13 @@ chain forward-chain {
         
         oifname $INTERNET_DEV jump forward2internet-chain \
             comment "INTERNET FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        
         oifname $LAN_DEV jump forward2lan-chain \
             comment "LAN FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        
         oifname $DMZ_DEV jump forward2dmz-chain \
             comment "DMZ FELE IRANYULO FORGALOM SZUROSZABALYAIHOZ UGRAS" 
+        
         counter drop \
             comment "MINDEN EGYEB SZAMOLVA ES ELDOBVA" 
         }
