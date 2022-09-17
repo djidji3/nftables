@@ -6,6 +6,7 @@ chain forward-chain {
             
         ct state invalid drop \
             comment "INVALID CSOMAGOK ELDOBVA" 
+        
         ct state established,related accept \
             comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
         
