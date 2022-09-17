@@ -11,3 +11,6 @@ define INTERNET_DEV=enp0s3
 define OP_IP=192.168.100.101
 define MAILSERVER_IP=10.20.20.2
 define MAILSERVER_PORT={ submission, imap2 }
+
+define WEBSERVER_IP=10.20.20.2
+define WEBMAILSERVER_PORT={ http, https }
