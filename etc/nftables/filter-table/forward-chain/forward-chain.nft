@@ -2,7 +2,7 @@
 chain forward-chain {
     type filter hook forward priority filter; policy drop;
         ip saddr @BLACKLIST_SET counter drop \
-            comment "BLACKLISTBAN TALALHATO IP-K SEHOVA" 
+            comment "BLACKLISTBAN TALALHATO IP-K MINDEN FORWARD ELDOBVA" 
             
         ct state invalid drop \
             comment "INVALID CSOMAGOK ELDOBVA" 
