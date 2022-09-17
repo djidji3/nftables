@@ -3,10 +3,7 @@ chain forward2dmz-chain {
     iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport @MAIL_PORT_SET  ct state new counter accept \
         comment "INSIDE > DMZ  MAIL PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
 
-    tcp dport @WEB_PORT_SET meter web-count-meter { ip saddr & 255.255.255.0 ct count over 1 } count  \
-        comment "INSIDE > DMZ  WEB PROTOKOLLOK LIMITACIO szamlalas" 
-
-    tcp dport @WEB_PORT_SET meter web-count-meter { ip saddr & 255.255.255.0 ct count over 1 } reject with tcp reset \
+    tcp dport @WEB_PORT_SET meter web-count-meter { ip saddr & 255.255.255.0 ct count over 1 } counter reject with tcp reset \
         comment "INSIDE > DMZ  WEB PROTOKOLLOK LIMITACIO" 
     
     iifname { $LAN_DEV } ip protocol tcp ip saddr $LAN_NET ip daddr $WEBSERVER_IP tcp dport @WEB_PORT_SET ct state new counter accept \
