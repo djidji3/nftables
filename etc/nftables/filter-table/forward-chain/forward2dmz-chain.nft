@@ -3,7 +3,7 @@ chain forward2dmz-chain {
     iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport $MAILSERVER_PORT  ct state new counter accept \
         comment "INSIDE > DMZ  MAIL PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
 
-    iifname $LAN_DEV ip protocoll tcp ip saddr $LAN_NET ip daddr $WEBSERVER_IP tcp dport $WEBMAILSERVER_PORT ct state new counter accept \
+    iifname $LAN_DEV ip protocoll tcp ip saddr $LAN_NET ip daddr $WEBSERVER_IP tcp dport $WEBSERVER_PORT ct state new counter accept \
         comment "INSIDE > DMZ  WEB PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
 
     iifname $LAN_DEV ip saddr 10.10.10.2 tcp dport 22 ct state new counter accept \
