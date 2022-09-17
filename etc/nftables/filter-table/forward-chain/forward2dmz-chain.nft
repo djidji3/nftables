@@ -1,6 +1,6 @@
 chain forward2dmz-chain {
 #	tcp dport ssh ct state new meter ssh-dmz-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
-    iifname $LAN_DEV ip saddr $LAN_NET icmp type icmp type echo-request accept \    
+    iifname $LAN_DEV ip saddr $LAN_NET icmp type echo-request accept \    
             comment "BElSO HALOZATBOL PING ENGEDVE" 
     
     iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport @MAIL_PORT_SET  ct state new counter accept \
