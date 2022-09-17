@@ -18,7 +18,8 @@ set MAIL_PORT_SET{
     type inet_service
     elements ={
         submission,
-        imap2
+        imap2,
+        smtp
     }
 }
 
