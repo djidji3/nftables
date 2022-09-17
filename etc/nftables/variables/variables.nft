@@ -13,4 +13,4 @@ define MAILSERVER_IP=10.20.20.2
 define MAILSERVER_PORT={ submission, imap2 }
 
 define WEBSERVER_IP=10.20.20.2
-define WEERVER_PORT={ http, https }
+define WEBSERVER_PORT={ http, https }
