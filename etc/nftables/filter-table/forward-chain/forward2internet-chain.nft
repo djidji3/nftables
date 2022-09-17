@@ -1,14 +1,5 @@
 # FORWARD2INTERNET-CHAIN
 chain forward2internet-chain {
-    tcp dport ftp ct helper set "ftp-helper" \ 
-        comment "FTP HELPER HASZNALATA"
-    
-    udp dport sip ct helper set "sip-udp-helper" \ 
-        comment "SIP UDP HELPER HASZNALATA"
-    
-    tcp dport sip ct helper set "sip-tcp-helper" \ 
-        comment "SIP TCP HELPER HASZNALATA"
-
     iif $DMZ_DEV ip saddr $DMZ_NET counter accept \
         comment "DMZ > NET SZAMOLVA ES ENGEDVE" 
     
