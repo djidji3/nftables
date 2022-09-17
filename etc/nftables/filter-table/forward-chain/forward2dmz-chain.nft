@@ -1,18 +1,18 @@
 chain forward2dmz-chain {
 #	tcp dport ssh ct state new meter ssh-dmz-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
-    iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport $MAILSERVER_PORT  ct state new counter accept \
+    iifname $LAN_DEV ip protocol tcp ip saddr $LAN_NET ip daddr $MAILSERVER_IP tcp dport @MAIL_PORT_SET  ct state new counter accept \
         comment "INSIDE > DMZ  MAIL PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
 
-    tcp daddr $WEBSERVER_PORT meter web-count-meter { ip saddr & 255.255.255.0 ct count over 1 } reject with tcp reset \
+    tcp daddr @WEB_PORT_SET meter web-count-meter { ip saddr & 255.255.255.0 ct count over 1 } reject with tcp reset \
         comment "INSIDE > DMZ  WEB PROTOKOLLOK LIMITACIO" 
     
-    iifname { $LAN_DEV } ip protocol tcp ip saddr $LAN_NET ip daddr $WEBSERVER_IP tcp dport $WEBSERVER_PORT ct state new counter accept \
+    iifname { $LAN_DEV } ip protocol tcp ip saddr $LAN_NET ip daddr $WEBSERVER_IP tcp dport @WEB_PORT_SET ct state new counter accept \
         comment "INSIDE > DMZ  WEB PROTOKOLLOK SZAMOLVA ES ENGEDVE" 
 
     iifname $LAN_DEV ip saddr 10.10.10.2 tcp dport 22 ct state new counter accept \
         comment "INSIDE > DMZ UJ SSH KAPCSOLATOK SZAMOLVA ES ENGEDVE" 
     
-    iifname $INTERNET_DEV ip protocol tcp ip daddr $MAILSERVER_IP tcp dport { $MAILSERVER_PORT, smtp } accept \
+    iifname $INTERNET_DEV ip protocol tcp ip daddr $MAILSERVER_IP tcp dport { @MAILSERVER_PORT_SET, smtp } accept \
         comment "NET > DMZ MAIL PROTOKOLLOK ENGEDVE" 
     
     iifname $LAN_DEV ip daddr $MAILSERVER_IP tcp dport ssh accept \
