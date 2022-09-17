@@ -1,0 +1,32 @@
+# SETS
+
+set OP_IP_SET {
+    type ipv4_addr 
+    elements = {
+        192.168.100.101
+    }
+}
+
+set OP_MAC_SET{
+    type ether_addr
+    elements = {
+        00:E0:4C:68:17:E0
+    }
+}
+
+set MAIL_PORT_SET{
+    type inet_service
+    elements ={
+        submission,
+        imap2
+    }
+}
+
+set WEB_PORT_SET{
+    type inet_service
+    elements ={
+        http,
+        https
+    }
+}
+
