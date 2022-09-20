@@ -1,9 +1,9 @@
 # FORWARD2INTERNET-CHAIN
 chain forward2internet-chain {
-    meta nfproto ipv4 ip daddr . meta l4proto . tcp dport @INTERNET_ALLOW_SET accept \
+    meta nfproto ipv4 ip daddr . meta l4proto . tcp dport @INTERNET_ALLOW_SET counter accept \
         comment "2INTERNET_ALLOW_SET ENGEDVE"
 
-    tcp dport smtp reject with tcp reset \
+    tcp dport smtp counter reject with tcp reset \
         comment "INTERNET IRANYBA A SMTP FORGALOM TILTVA"
 
     iif $DMZ_DEV ip saddr $DMZ_NET counter accept \
