@@ -46,6 +46,7 @@ set INTERNET_ALLOW_SET{
         66.102.1.108 . tcp . smtp,
         74.125.140.108 . tcp . smtp,
         142.250.102.26 . tcp . smtp,
+        142.250.102.108 . tcp . smtp,
         142.250.102.27 . tcp . smtp,
         142.250.27.27 . tcp . smtp
     }
