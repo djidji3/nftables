@@ -3,6 +3,8 @@ chain forward2internet-chain {
     meta nfproto ipv4 ip saddr . meta l4proto . tcp dport @NET_ALLOW_SET counter accept \
         comment "2INTERNET_ALLOW_SET SZAMOLVA ES ENGEDVE"
 
+    ip saddr . ip daddr . ip protocol . tcp dport { 1.1.1.1 . 2.2.2.2 . tcp . 80 }  accept    
+
     tcp dport smtp counter reject with tcp reset \
         comment "INTERNET IRANYBA A SMTP FORGALOM SZAMOLVA ES TILTVA"
 

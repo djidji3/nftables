@@ -38,7 +38,7 @@ set BLACKLIST_SET{
     elements ={
         10.99.99.0/24 timeout 168m,
         10.99.89.3-10.99.89.11 timeout 168h,
-        10.10.10.2 timeout 168h
+        10.10.10.2 timeout 2m
     }
 }
 
@@ -54,6 +54,13 @@ set NET_ALLOW_SET{
         142.250.102.27 . tcp . smtp,
         142.250.27.27 . tcp . smtp,
         216.239.32.0/19 . tcp . smtp
+    }
+}
+# LISTA INTERFACE NEV, MAC CIM, IPCIM, PROTOCOL, SERVICE ALAPJAN:
+set NET_ALLOW_SET2{
+    type ifname . ether_addr . ipv4_addr . inet_proto . inet_service
+    elements ={
+        enp0s8 . 44:00:00:00:00:00 . 10.10.10.2 . ssh
     }
 }
 
