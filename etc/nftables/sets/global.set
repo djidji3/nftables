@@ -49,7 +49,7 @@ set INTERNET_ALLOW_SET{
         142.250.102.108 . tcp . smtp,
         142.250.102.109 . tcp . smtp,
         142.250.102.27 . tcp . smtp,
-        142.250.27.27 . tcp . smtp
+        142.250.27.27 . tcp . smtp,
         216.239.32.0/19 . tcp . smtp
     }
 }
