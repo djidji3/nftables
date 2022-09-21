@@ -48,6 +48,7 @@ set WHITELIST_SET{
     elements ={
         enp0s8 . 44:00:00:00:00:00 . 10.10.10.2 . tcp . 389,
     }
+}
 
 # LISTA IPCIM, PROTOCOL, SERVICE ALAPJAN:
 set NET_ALLOW_SET{
@@ -63,5 +64,3 @@ set NET_ALLOW_SET{
         216.239.32.0/19 . tcp . smtp
     }
 }
-}
-
