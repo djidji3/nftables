@@ -46,7 +46,7 @@ set BLACKLIST_SET{
 set WHITELIST_SET{
     type ifname . ether_addr . ipv4_addr . inet_proto . inet_service
     elements ={
-        enp0s8 . 44:00:00:00:00:00 . 10.10.10.2 . tcp . 389,
+        enp0s8 . 44:00:00:00:00:00 . 10.10.10.2 . tcp . ldap
     }
 }
 
