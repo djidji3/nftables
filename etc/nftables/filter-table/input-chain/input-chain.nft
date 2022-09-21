@@ -6,12 +6,13 @@ chain input-chain {
 		
         ct state invalid drop \
             comment "INVALID CSOMAGOK ELDOBVA"
+   
+        ip saddr @BLACKLIST_SET  drop \
+            comment "BLACKLISTASOK ESETEN MINDEN TILTVA" 
 		
         ct state established,related accept \
             comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
         
-        ip saddr @BLACKLIST_SET  drop \
-            comment "BLACKLISTASOK ESETEN MINDEN TILTVA" 
         
         ip saddr @OP_IP_SET  accept \
             comment "SAJAT GEPEMBROL MINDEN ENGEDVE" 
