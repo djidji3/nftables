@@ -31,16 +31,18 @@ set WEB_PORT_SET{
     }
 }
 
+# BLACK LISTA, IPCIM + IDOZITO ALAPJAN:
 set BLACKLIST_SET{
     type ipv4_addr
     flags interval, timeout
     elements ={
-        10.99.99.0/24 timeout 1m,
-        10.99.89.3-10.99.89.11 timeout 1m,
-        10.10.10.2 timeout 1m
+        10.99.99.0/24 timeout 168m,
+        10.99.89.3-10.99.89.11 timeout 168h,
+        10.10.10.2 timeout 168h
     }
 }
 
+# LISTA IPCIM, PROTOCOL, SERVICE ALAPJAN:
 set NET_ALLOW_SET{
     type ipv4_addr . inet_proto . inet_service
     elements ={
