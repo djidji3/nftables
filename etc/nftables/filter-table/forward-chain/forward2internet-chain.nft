@@ -1,6 +1,6 @@
 # FORWARD2INTERNET-CHAIN
 chain forward2internet-chain {
-    meta nfproto ipv4 ip saddr . meta l4proto . ipv4 ip daddr . tcp dport @INTERNET_ALLOW_SET2 counter accept \
+    meta nfproto ipv4 ip saddr . meta l4proto . meta nfproto ipv4 ip daddr . tcp dport @INTERNET_ALLOW_SET2 counter accept \
         comment "2INTERNET_ALLOW_SET SZAMOLVA ES ENGEDVE"
 
     tcp dport smtp counter reject with tcp reset \
