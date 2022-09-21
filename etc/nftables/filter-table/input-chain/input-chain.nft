@@ -10,6 +10,9 @@ chain input-chain {
         ct state established,related accept \
             comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
         
+        ip saddr @BLACKLIST_SET  drop \
+            comment "BLACKLISTASOK ESETEN MINDEN TILTVA" 
+        
         ip saddr @OP_IP_SET  accept \
             comment "SAJAT GEPEMBROL MINDEN ENGEDVE" 
 #		tcp dport ssh ct state new meter ssh-input-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter packets 0 bytes 0 drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
