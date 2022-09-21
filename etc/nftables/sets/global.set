@@ -53,3 +53,9 @@ set INTERNET_ALLOW_SET{
         216.239.32.0/19 . tcp . smtp
     }
 }
+set INTERNET_ALLOW_SET2{
+    type ipv4_addr . inet_proto . ipv4_addr . inet_service
+    elements ={
+        10.10.10.2 . tcp . 142.250.102.109 . smtp,
+      }
+}
