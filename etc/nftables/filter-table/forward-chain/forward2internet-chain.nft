@@ -3,7 +3,12 @@ chain forward2internet-chain {
     meta nfproto ipv4 ip saddr . meta l4proto . tcp dport @NET_ALLOW_SET counter accept \
         comment "2INTERNET_ALLOW_SET SZAMOLVA ES ENGEDVE"
 
-    ip saddr . ip daddr . ip protocol . tcp dport { 1.1.1.1 . 2.2.2.2 . tcp . 80 }  accept    
+    ip saddr . ip daddr . ip protocol . tcp dport { 1.1.1.1 . 2.2.2.2 . tcp . 80 }  accept \
+        comment "ANONYMOUS SET ENGEDVE"
+
+    iifname . ether_addr . ip daddr . meta l4proto tcp .  tcp dport @WHITELIST_SET accept \
+        comment "WHITELIST SET-ROL ENGEDVE"
+
 
     tcp dport smtp counter reject with tcp reset \
         comment "INTERNET IRANYBA A SMTP FORGALOM SZAMOLVA ES TILTVA"
