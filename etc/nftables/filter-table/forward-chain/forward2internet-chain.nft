@@ -8,7 +8,12 @@ chain forward2internet-chain {
 
     iifname . ether saddr . ip daddr . meta l4proto . tcp dport @WHITELIST_SET accept \
         comment "WHITELIST SET-ROL ENGEDVE"
+    
+    ip saddr @BLACKLIST_SET  drop \
+        comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
 
+    ip daddr @BLACKLIST_SET  drop \
+        comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
 
     tcp dport smtp counter reject with tcp reset \
         comment "INTERNET IRANYBA A SMTP FORGALOM SZAMOLVA ES TILTVA"

@@ -9,6 +9,9 @@ chain input-chain {
    
         ip saddr @BLACKLIST_SET  drop \
             comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
+
+        ip daddr @BLACKLIST_SET  drop \
+            comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
 		
         ct state established,related accept \
             comment "MAR LETEZO KAPCSOLATOK ENGEDVE" 
