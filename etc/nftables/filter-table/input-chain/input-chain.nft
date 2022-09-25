@@ -10,7 +10,7 @@ chain input-chain {
         ip saddr @BLACKHOLE_SET  drop \
             comment "BLACKLISTAS IP ESETEN, MINDEN TILTVA" 
 
-        tcp flags syn tcp dport 21 add @BLACKLIST_SET { ip saddr limit rate over 5/minute } \
+        tcp flags syn tcp dport 21 add @BLACKHOLE_SET { ip saddr limit rate over 5/minute } \
             add @BLACKHOLE_SET { ip saddr } drop \
             comment "21-PORTRA ERKEZO SYNC KERES ESETEN, HA A LIMITET TULLEPIK AKKOR BLACKLISTA ES EGY IDEIG MINDEN TILTVA" 
 
