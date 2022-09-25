@@ -10,8 +10,8 @@ chain input-chain {
 #       icmp type echo-request limit rate 10/minute counter accept
 #       icmp type echo-request meter ping-flood { ip saddr timeout 1m limit rate over 5/minute } counter accept
 #       icmp type echo-request meter ping-flood { ip saddr timeout 1m limit rate over 5/minute } set add  @BLACKLIST_SET drop
-        icmp type echo-request meter ping-flood { ip saddr timeout 1m limit rate over 5/minute } set @BLACKLIST_SET drop
-     
+#        icmp type echo-request meter ping-flood { ip saddr timeout 1m limit rate over 5/minute } set add @BLACKLIST_SET drop
+        tcp flags syn tcp dport 22 add @BLACKLIST_SET { ip saddr } 
 
         ip saddr @BLACKLIST_SET  drop \
             comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 

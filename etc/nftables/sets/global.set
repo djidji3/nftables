@@ -34,7 +34,7 @@ set WEB_PORT_SET{
 # BLACK LISTA, IPCIM + IDOZITO ALAPJAN:
 set BLACKLIST_SET{
     type ipv4_addr
-    flags interval, timeout
+    flags dynamic, interval, timeout
     elements ={
         10.99.99.0/24 timeout 168h,
         10.99.89.3-10.99.89.11 timeout 168h,
@@ -45,11 +45,9 @@ set BLACKLIST_SET{
 # BLACK LISTA, IPCIM + GLOBALIS MEGHATAROZOTT IDOZITO ALAPJAN:
 set BLACKLIST_G_SET{
     type ipv4_addr; timeout 2m
-    flags interval, timeout
+    flags interval, dynamic, timeout
     elements ={
-        10.99.98.0/24,
-        10.99.89.13-10.99.89.17,
-        10.10.10.200
+  
     }
 }
 
