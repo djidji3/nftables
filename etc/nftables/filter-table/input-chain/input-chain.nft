@@ -14,7 +14,7 @@ chain input-chain {
             add @BLACKHOLE_SET { ip saddr } drop \
             comment "21-PORTRA ERKEZO SYNC KERES ESETEN, HA A LIMITET TULLEPIK AKKOR BLACKLISTA ES EGY IDEIG MINDEN TILTVA" 
 
-        tcp dport @HONEYPOT_PORT_SET  @BLACKHOLE_SET { ip saddr } \
+        tcp dport @HONEYPOT_PORTS add @BLACKHOLE_SET { ip saddr } \
             comment "EZEN SET-BEN LEVO PORTOKRA ERKEZO CSOMAG ESETEN A FORRAS IP BLACKHOLE_SET LISTARA KERUL"
 
 #       icmp type echo-request limit rate 10/minute counter accept

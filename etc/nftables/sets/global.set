@@ -31,7 +31,7 @@ set WEB_PORT_SET{
     }
 }
 
-set HONEYPOT_PORT_SET{
+set HONEYPOT_PORTS{
     type inet_service
     elements ={
         20, 21, 23
