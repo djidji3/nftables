@@ -7,6 +7,9 @@ chain input-chain {
         ct state invalid drop \
             comment "INVALID CSOMAGOK ELDOBVA"
    
+        tcp flags syn tcp dport ssh meter flood { ip saddr timeout 1m limit rate over 5/second } counter drop \
+            comment "SSH FLOOD KORLATOZASA"
+        
         ip saddr @BLACKLIST_SET  drop \
             comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
 
@@ -24,7 +27,6 @@ chain input-chain {
 #       icmp type echo-request meter ping-limit size 65535 { ip saddr limit rate over 5/minute } counter packets 0 bytes 0 drop comment "PING KERESEK LIMITALASA" 
 
 #        tcp flags syn tcp dport ssh meter flood { ip saddr timeout 1m limit rate over 10/second }  add @BLACKLIST_SET { ip saddr timeout 1m } drop        
-        tcp flags syn tcp dport ssh meter flood { ip saddr timeout 1m limit rate over 10/second }  drop        
         
         icmp type echo-request accept \
             comment "PING ENGEDVE" 
