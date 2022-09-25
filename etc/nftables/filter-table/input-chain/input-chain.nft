@@ -1,7 +1,7 @@
 # INPUT-CHAIN
 chain input-chain { 
     type filter hook input priority filter; policy drop;
-	    iif "lo" accept \
+	    iif "lo" log prefix "belso kommunikacio" accept \
             comment "lo KOMMUNIKACIO ENGEDVE" 
 		
         ct state invalid drop \
