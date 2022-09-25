@@ -51,6 +51,14 @@ set BLACKLIST_G_SET{
     }
 }
 
+
+# BLACKHOLE SET :
+set BLACKHOLE_SET{ 
+    type ipv4_addr; timeout 2m 
+    flags dynamic, timeout
+    elements = { }
+    }
+
 # LISTA INTERFACE NEV, MAC CIM, IPCIM, PROTOCOL, SERVICE ALAPJAN:
 set WHITELIST_SET{
     type ifname . ether_addr . ipv4_addr . inet_proto . inet_service
