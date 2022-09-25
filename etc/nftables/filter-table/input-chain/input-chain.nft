@@ -8,6 +8,7 @@ chain input-chain {
             comment "INVALID CSOMAGOK ELDOBVA"
    
         icmp type echo-request limit rate 10/second accept
+        icmp type echo-request  drop
 
         ip saddr @BLACKLIST_SET  drop \
             comment "BLACKLISTASOK ESETEN, ADOTT IDEIG MINDEN TILTVA" 
