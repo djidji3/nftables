@@ -47,7 +47,7 @@ set BLACKLIST_G_SET{
     type ipv4_addr; timeout 2m
     flags interval, dynamic, timeout
     elements ={
-  
+        10.10.10.20
     }
 }
 
