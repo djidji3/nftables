@@ -19,7 +19,8 @@ chain input-chain {
         
         ip saddr @OP_IP_SET  accept \
             comment "SAJAT GEPEMBROL MINDEN ENGEDVE" 
-#		tcp dport ssh ct state new meter ssh-input-limit size 65535 { tcp dport . ip saddr limit rate over 2/minute } counter packets 0 bytes 0 drop comment "UJ SSH KAPCSOLAT INDITASANAK LIMITALASA" 
+
+		tcp dport ssh ct state new meter ssh-input-flood { ip saddr timeout 1m rate over 3/minute } set add ip saddr @BLACKLIST_SET  drop 
 #       icmp type echo-request meter ping-limit size 65535 { ip saddr limit rate over 5/minute } counter packets 0 bytes 0 drop comment "PING KERESEK LIMITALASA" 
         
         icmp type echo-request accept \
