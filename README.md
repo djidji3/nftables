@@ -43,4 +43,4 @@ A csomagok celja alapjan 3 tovabbi chain-re osztom fel a forward-chain nevu lanc
     tartozo tovabbi includokat, azok pedig a tovabbi includokat .....
 
 # celgepre felmasoljuk a letrehozott konyvtarszerkezetet
-sudo rsync -r --del ./nftables/ nemcsics@192.168.100.204:/etc/nftables
+sudo rsync -r --del ./nftables/ usernev@192.168.100.204:/etc/nftables

@@ -63,7 +63,6 @@ set BLACKLIST_G_SET{
 set BLACKHOLE_SET{ 
     type ipv4_addr; timeout 2m 
     flags dynamic, timeout
-
     }
 
 
